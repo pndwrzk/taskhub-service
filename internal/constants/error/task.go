@@ -1,0 +1,9 @@
+package error
+
+import "errors"
+
+var ErrTaskNotFound = errors.New("task not found")
+
+var TaskErrors = []error{
+	ErrTaskNotFound,
+}
