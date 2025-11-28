@@ -70,11 +70,11 @@ func (u *userUsecase) Login(ctx context.Context, req *dto.LoginRequest) (*dto.Lo
 		return nil, err
 	}
 	if user == nil {
-		return nil, errConst.ErrUserNotFound
+		return nil, errConst.ErrLogin
 	}
 
 	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(req.Password)); err != nil {
-		return nil, errConst.ErrPasswordDoesNotMatch
+		return nil, errConst.ErrLogin
 	}
 
 	idStr := user.ID.String()
